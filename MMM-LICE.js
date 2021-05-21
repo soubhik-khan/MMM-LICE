@@ -12,7 +12,7 @@ Module.register("MMM-LICE", {
 	    source: "USD",       // USD unless you upgrade from free plan
 		symbols: "",         // Add in config file
         useHeader: false,    // true if you want a header      
-        header: "",          // Any text you want. useHeader must be true
+        header: "Currency Exchange",          // Any text you want. useHeader must be true
         maxWidth: "300px",
         animationSpeed: 3000,
         initialLoadDelay: 4250,
@@ -48,14 +48,14 @@ Module.register("MMM-LICE", {
         wrapper.style.maxWidth = this.config.maxWidth;
 
         if (!this.loaded) {
-            wrapper.innerHTML = this.translate("Show me the money . . .");
-            wrapper.classList.add("bright", "light", "small");
+            wrapper.innerHTML = this.translate("Today's exchange rate . . .");
+            wrapper.classList.add("light", "xsmall");
             return wrapper;
         }
 
         if (this.config.useHeader != false) {
             var header = document.createElement("header");
-            header.classList.add("small", "bright", "light", "header");
+//            header.classList.add("small", "bright", "light", "header");
             header.innerHTML = this.config.header;
             wrapper.appendChild(header);
         }
@@ -69,8 +69,8 @@ Module.register("MMM-LICE", {
 
         // timestamp
         var timestamp = document.createElement("div");
-        timestamp.classList.add("small", "bright", "timestamp");
-        timestamp.innerHTML = "Rate as of " + moment.unix(LICE.timestamp).utc().format("MMM DD hh:mm");
+        timestamp.classList.add("xsmall");
+        timestamp.innerHTML = "Rate as of " + moment.unix(LICE.timestamp).format("MMM DD hh:mm");
         wrapper.appendChild(timestamp);
 
 
